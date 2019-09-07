@@ -1,0 +1,23 @@
+package com.yangd.kotlininaction_2.IV.III
+
+class Client2(val name: String, val postalCode: Int) {
+    override fun equals(other: Any?): Boolean {
+        if (other == null || other !is Client2) {
+            return false
+        }
+        return name == other.name &&
+                postalCode == other.postalCode
+    }
+
+    override fun toString(): String =
+        "Client(name=$name,postalCode = $postalCode)"
+}
+
+fun main(args: Array<String>) {
+    val processed = hashSetOf(Client2("Alice", 342562))
+    println(processed.contains(Client2("Alice", 342562)))
+
+    val client1 = Client2("Alice", 342562)
+    val client2 = Client2("Alice", 342562)
+    println(client1 == client2)
+}
